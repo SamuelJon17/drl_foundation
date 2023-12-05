@@ -28,9 +28,6 @@ class PolicyNet(nn.Module):
         categorical = torch.distributions.Categorical(prob_actions)
         stochastic_action = categorical.sample()
         log_prob_action = categorical.log_prob(stochastic_action)
-        # stochastic_action = torch.multinomial(prob_actions, num_samples=1, replacement=True).item()
-        # log_prob_action = torch.log(prob_actions.squeeze(0)[stochastic_action])
-        # return stochastic_action, log_prob_action
         return stochastic_action.item(), log_prob_action
 
 
